@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ 
+<generatorConfiguration>
+ 
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+ 
+		<!-- 去掉自动生成的注释-->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- jdbc连接配置 -->
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="dbc:oracle:thin:@//127.0.0.1:1521/orcl" userId="demo"
+			password="demo">
+		</jdbcConnection>
+ 
+		<!-- 数字字段是否强制使用BigDecimal类 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+ 
+		<!-- entity创建后放在那个项目的哪个包路径上 -->
+		<javaModelGenerator
+			targetPackage="com.dao.entity"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- dao的.xml描述sql文件创建后放在那个项目的哪个包路径上 -->
+		<sqlMapGenerator
+			targetPackage="com.dao.sqlmap"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- dao创建后放在那个项目的哪个包路径上 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.dao.sqlmap"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+ 
+		<table schema="demo" tableName="tb_user">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+ 
+	</context>
+</generatorConfiguration>
