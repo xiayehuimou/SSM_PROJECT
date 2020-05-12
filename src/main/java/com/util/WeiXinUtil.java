@@ -43,7 +43,7 @@ public class WeiXinUtil {
 	private static Token token = null;
 	private static String ticket = null;
 
-	// 凭证获取（GET）限2000（次/天）
+	// (全局token)凭证获取（GET）限2000（次/天）
 	public final static String token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
 	/**
@@ -115,10 +115,6 @@ public class WeiXinUtil {
 	 * @return
 	 */
 	public static Token getToken(String appid, String appsecret) {
-		// 第三方用户唯一凭证
-		appid = "wx7504778ec4f99579";
-		// 第三方用户唯一凭证密钥
-		appsecret = "b77fba754559304c833a258f4a6f1853";
 		long now = new Date().getTime();
 		if (tokenTime != 0 && now - tokenTime < 7000000) {// token有效时间 7e6 毫秒
 			return token;
