@@ -22,14 +22,14 @@ import net.sf.json.JSONObject;
 @Controller
 @RequestMapping("/wx")
 public class WxController {
-	public static final String APPID="wx601b7405bdf52b5f";
-    public static final String APPSECRET ="72ab93fa3aa7ef5b4f0b942b688c94d1";
+	public static final String APPID="";
+    public static final String APPSECRET ="";
     
     private static final Logger logger = Logger.getLogger(WxController.class);
 	
 	@RequestMapping(value = "/wxLogin", method = RequestMethod.GET)
 	public String wxLogin(HttpServletRequest request, HttpServletResponse response)throws ParseException, UnsupportedEncodingException {
-		//这个url的域名必须要进行再公众号中进行注册验证，这个地址是成功后的回调地址
+		//这个地址是成功后的回调地址，域名必须和公众号中配置的域名一致
 		String backUrl="http://xiayehuimou.free.idcfengye.com/ssm_demo/wx/callBack";
 		// 第一步：用户同意授权，获取code
 		String url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ APPID
@@ -62,12 +62,12 @@ public class WxController {
 		if(!"0".equals(chickuserInfo.getString("errcode"))){
 			// 第三步：刷新access_token（如果需要）-----暂时没有使用,参考文档https://mp.weixin.qq.com/wiki，
 			String refreshTokenUrl="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid="+openid+"&grant_type=refresh_token&refresh_token="+refresh_token;
-			JSONObject refreshInfo =  WeiXinUtil.httpsRequest(chickUrl, "GET", null);
+			JSONObject refreshInfo =  WeiXinUtil.httpsRequest(refreshTokenUrl, "GET", null);
 			System.out.println(refreshInfo.toString());
 			access_token=refreshInfo.getString("access_token");
 		}
 		// 第四步：拉取用户信息(需scope为 snsapi_userinfo)
-		// 这个url的token是网络授权token
+		// 这个url的token是网页授权token（获取的基本信息内容相对较少，没有是否关注公众号字段）
 		//String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token="+access_token
 		//		+ "&openid="+openid
 		//		+ "&lang=zh_CN";
@@ -80,11 +80,9 @@ public class WxController {
 		System.out.println("JSON-----"+userInfo.toString());
 		System.out.println("名字-----"+userInfo.getString("nickname"));
 		System.out.println("头像-----"+userInfo.getString("headimgurl"));
-		/*
-         * end 获取微信用户基本信息
-         */
 		//获取到用户信息后就可以进行重定向，走自己的业务逻辑了。。。。。。
 		//接来的逻辑就是你系统逻辑了，请自由发挥
+		// 我此处是打开file.html页面
 		return "file";
 	}
 
