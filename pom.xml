@@ -34,7 +34,7 @@
         <!--JSON与POJO互转：@RequestBody、@ResponseBody-->
         <jackson.version>2.9.0</jackson.version>
         <!--表单验证-->
-        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.4.2.Final</hibernate-validator.version>
 
         <!--MyBatis相关包-->
         <mybatis.version>3.4.5</mybatis.version>
