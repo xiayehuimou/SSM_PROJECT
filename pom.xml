@@ -48,7 +48,7 @@
         <oracle.version>11.2.0</oracle.version>
 
         <!--单元测试包-->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
     <dependencies>
         <!--基本包-->
