@@ -32,7 +32,7 @@
         <!--Spring/Spring MVC 相关包-->
         <springframework.version>5.0.0.RELEASE</springframework.version>
         <!--JSON与POJO互转：@RequestBody、@ResponseBody-->
-        <jackson.version>2.9.0</jackson.version>
+        <jackson.version>2.12.1</jackson.version>
         <!--表单验证-->
         <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
 
