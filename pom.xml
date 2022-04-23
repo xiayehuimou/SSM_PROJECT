@@ -30,7 +30,7 @@
 
 
         <!--Spring/Spring MVC 相关包-->
-        <springframework.version>5.0.0.RELEASE</springframework.version>
+        <springframework.version>5.3.19</springframework.version>
         <!--JSON与POJO互转：@RequestBody、@ResponseBody-->
         <jackson.version>2.9.0</jackson.version>
         <!--表单验证-->
